@@ -16,23 +16,20 @@ export const Footer: React.FC = () => {
     setIsSubmitting(true);
     setContactError(null);
 
-    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || 'fdc4592a-9c33-4bf6-84bc-3b0e0010dccc';
+
+    const formData = new FormData();
+    formData.append('access_key', accessKey);
+    formData.append('name', contactName || 'Anonymous Visitor');
+    formData.append('email', contactEmail);
+    formData.append('message', contactMessage);
+    formData.append('subject', `New Inquiry on DroneCleaning.Tech from ${contactName || contactEmail}`);
+    formData.append('from_name', 'DroneCleaning.Tech Portal');
 
     try {
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json'
-        },
-        body: JSON.stringify({
-          access_key: accessKey,
-          name: contactName || 'Anonymous Visitor',
-          email: contactEmail,
-          message: contactMessage,
-          subject: `New Inquiry on DroneCleaning.Tech from ${contactName || contactEmail}`,
-          from_name: 'DroneCleaning.Tech Portal'
-        })
+        body: formData
       });
 
       const result = await response.json();
@@ -54,6 +51,7 @@ export const Footer: React.FC = () => {
       setIsSubmitting(false);
     }
   };
+
 
   return (
     <footer id="author" className="bg-slate-900 text-white pt-16 pb-12 border-t border-slate-800">
