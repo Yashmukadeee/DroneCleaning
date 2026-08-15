@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Article } from '../types/blog';
-import { X, Share2, Check, Sparkles, UserCheck, ArrowLeft, Globe, Linkedin, Instagram, Github } from 'lucide-react';
+import { X, Share2, Check, Sparkles, ArrowLeft, Globe, Linkedin, Instagram, Github, BookOpen, ExternalLink } from 'lucide-react';
 
 interface ArticleReaderModalProps {
   article: Article | null;
@@ -137,8 +137,32 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({ article,
             dangerouslySetInnerHTML={{ __html: article.content }}
           />
 
+          {/* Sources & Further Reading Section */}
+          {article.sources && article.sources.length > 0 && (
+            <div className="mt-12 pt-8 border-t border-slate-200">
+              <div className="flex items-center gap-2 font-bold text-slate-900 mb-4 text-base">
+                <BookOpen className="w-4 h-4 text-sky-600" />
+                <span>Sources & Further Reading</span>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {article.sources.map((source, idx) => (
+                  <a
+                    key={idx}
+                    href={source.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80 hover:border-sky-500 hover:bg-sky-50/60 transition-all flex items-center justify-between gap-3 group text-xs font-semibold text-slate-700 hover:text-sky-600 shadow-sm"
+                  >
+                    <span className="line-clamp-2">{source.label}</span>
+                    <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-sky-600 shrink-0 transition-colors" />
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+
           {/* Author Card */}
-          <div className="mt-16 pt-8 border-t border-slate-200 bg-slate-50 p-6 rounded-2xl flex flex-col sm:flex-row items-center gap-6">
+          <div className="mt-12 pt-8 border-t border-slate-200 bg-slate-50 p-6 rounded-2xl flex flex-col sm:flex-row items-center gap-6">
             <img
               src={article.author.avatarUrl}
               alt={article.author.name}
@@ -147,11 +171,9 @@ export const ArticleReaderModal: React.FC<ArticleReaderModalProps> = ({ article,
             <div>
               <div className="flex items-center gap-2">
                 <h4 className="font-extrabold text-lg text-slate-900">{article.author.name}</h4>
-                <span className="inline-flex items-center gap-1 bg-emerald-100 text-emerald-700 text-[10px] font-bold px-2 py-0.5 rounded-full">
-                  <UserCheck className="w-3 h-3" /> Verified Author
-                </span>
               </div>
               <p className="text-xs text-sky-600 font-semibold mb-2">Project Visionary & Robotics Concept Lead</p>
+
               <p className="text-sm text-slate-600 leading-relaxed">
                 Exploring the conceptual engineering, FMCW radar positioning physics, high-voltage tether dynamics, and commercial feasibility of autonomous high-rise building cleaning.
               </p>

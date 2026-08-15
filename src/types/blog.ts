@@ -15,6 +15,11 @@ export interface Comment {
   likes: number;
 }
 
+export interface ArticleSource {
+  label: string;
+  url: string;
+}
+
 export interface Article {
   id: string;
   title: string;
@@ -32,10 +37,11 @@ export interface Article {
     avatarUrl: string;
     location: string;
   };
-  likes: number;
   featured?: boolean;
   tags: string[];
+  sources?: ArticleSource[];
 }
+
 
 export interface DroneHotspot {
   id: string;
