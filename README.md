@@ -16,7 +16,6 @@ Created and authored by **[Yash Mukade](https://yashmukade.netlify.app/)**.
 - 📘 **Technical Whitepapers & Research Hub**: Conceptual and peer-reviewed deep dives into 77GHz FMCW radar positioning, fluid dynamics, multirotor aerodynamics, urban aviation compliance, and AI thermal defect detection.
 - 🎯 **Idea & Vision Pitching Showcase**: Clear architectural problem breakdown, high-rise gondola safety risk mitigation, and robotic maintenance innovation.
 - 🔍 **Live Search & Category Filtering**: Instant client-side search across research papers, tags, and categories.
-- 📰 **Newsletter Dispatch Modal**: Integrated subscriber capture module for project updates.
 - 📱 **Ultra-Responsive & Polished UI**: Built with modern typography, smooth glassmorphism, micro-animations, and full mobile optimization.
 
 ---

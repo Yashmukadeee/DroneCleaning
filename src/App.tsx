@@ -6,7 +6,6 @@ import { Hero } from './components/Hero';
 import { VisionSection } from './components/VisionSection';
 import { ArticleCard } from './components/ArticleCard';
 import { ArticleReaderModal } from './components/ArticleReaderModal';
-import { NewsletterModal } from './components/NewsletterModal';
 import { Footer } from './components/Footer';
 import { Search, Sparkles, BookOpen, Layers } from 'lucide-react';
 
@@ -15,7 +14,6 @@ export default function App() {
   const [activeCategory, setActiveCategory] = useState<Category>('All');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
-  const [isNewsletterOpen, setIsNewsletterOpen] = useState(false);
 
   // Force light mode for clean crisp aesthetic
   useEffect(() => {
@@ -40,7 +38,7 @@ export default function App() {
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans antialiased selection:bg-sky-500 selection:text-white">
       
       {/* Top Sticky Header */}
-      <Header onOpenNewsletter={() => setIsNewsletterOpen(true)} />
+      <Header />
 
       {/* Hero Section */}
       <Hero
@@ -144,12 +142,6 @@ export default function App() {
       <ArticleReaderModal
         article={selectedArticle}
         onClose={() => setSelectedArticle(null)}
-      />
-
-      {/* Newsletter Dispatch Modal */}
-      <NewsletterModal
-        isOpen={isNewsletterOpen}
-        onClose={() => setIsNewsletterOpen(false)}
       />
 
     </div>

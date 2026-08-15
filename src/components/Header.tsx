@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Bot, Menu, X, Mail, Sparkles } from 'lucide-react';
+import { Bot, Menu, X } from 'lucide-react';
 
-interface HeaderProps {
-  onOpenNewsletter?: () => void;
-}
-
-export const Header: React.FC<HeaderProps> = ({ onOpenNewsletter }) => {
+export const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -54,28 +50,25 @@ export const Header: React.FC<HeaderProps> = ({ onOpenNewsletter }) => {
             </a>
           </nav>
 
-          {/* Newsletter Subscribe CTA & Mobile Toggle */}
-          <div className="flex items-center gap-3">
-            {onOpenNewsletter && (
-              <button
-                onClick={onOpenNewsletter}
-                className="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold bg-sky-600 text-white hover:bg-sky-700 transition-all shadow-md shadow-sky-600/20 hover:scale-[1.02]"
-              >
-                <Mail className="w-3.5 h-3.5" />
-                <span>Subscribe Dispatch</span>
-              </button>
-            )}
+          {/* Right Action Button: Contact / Pitch */}
+          <div className="hidden md:flex items-center">
+            <a
+              href="#author"
+              className="px-5 py-2 rounded-full text-xs font-bold bg-sky-600 text-white hover:bg-sky-700 transition-all shadow-md shadow-sky-600/20 hover:scale-[1.02]"
+            >
+              Get In Touch
+            </a>
+          </div>
 
-            {/* Mobile Menu Toggle */}
-            <div className="md:hidden flex items-center">
-              <button
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2 rounded-lg text-slate-600 hover:bg-slate-100"
-                aria-label="Toggle Navigation Menu"
-              >
-                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-              </button>
-            </div>
+          {/* Mobile Menu Toggle */}
+          <div className="md:hidden flex items-center">
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="p-2 rounded-lg text-slate-600 hover:bg-slate-100"
+              aria-label="Toggle Navigation Menu"
+            >
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
           </div>
         </div>
 
@@ -103,18 +96,6 @@ export const Header: React.FC<HeaderProps> = ({ onOpenNewsletter }) => {
             >
               Author & Contact
             </a>
-            {onOpenNewsletter && (
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenNewsletter();
-                }}
-                className="mt-2 w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold bg-sky-600 text-white hover:bg-sky-700"
-              >
-                <Mail className="w-4 h-4" />
-                <span>Subscribe to Dispatch</span>
-              </button>
-            )}
           </div>
         )}
       </div>
