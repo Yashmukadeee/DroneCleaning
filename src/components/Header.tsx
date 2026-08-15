@@ -1,0 +1,143 @@
+import React, { useState, useEffect } from 'react';
+import { Bot, Menu, X, Mail, Sparkles } from 'lucide-react';
+
+interface HeaderProps {
+  onOpenNewsletter?: () => void;
+}
+
+export const Header: React.FC<HeaderProps> = ({ onOpenNewsletter }) => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <header className={`sticky top-0 z-40 transition-all duration-300 ${
+      isScrolled 
+        ? 'bg-white/95 shadow-md backdrop-blur-md py-3 border-b border-slate-200/80' 
+        : 'bg-white py-4 border-b border-slate-200/60'
+    }`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center">
+          
+          {/* Brand Logo */}
+          <a href="#" className="flex items-center gap-3 group">
+            <div className="w-10 h-10 rounded-xl bg-sky-600 text-white flex items-center justify-center shadow-lg shadow-sky-600/20 group-hover:scale-105 transition-transform">
+              <Bot className="w-6 h-6" />
+            </div>
+            <div className="flex flex-col">
+              <span className="font-extrabold text-xl sm:text-2xl tracking-tight text-slate-900 flex items-center gap-1">
+                DroneCleaning<span className="text-sky-600">.Tech</span>
+              </span>
+              <span className="text-[10px] uppercase font-bold tracking-widest text-slate-400 -mt-1">
+                Facade Automation Journal
+              </span>
+            </div>
+          </a>
+
+          {/* Desktop Navigation Links */}
+          <nav className="hidden lg:flex items-center space-x-1 bg-slate-100/80 p-1.5 rounded-full border border-slate-200">
+            <a href="#vision" className="px-4 py-1.5 text-xs font-bold text-slate-700 hover:text-sky-600 hover:bg-white rounded-full transition-all">
+              The Vision
+            </a>
+            <a href="#drone-tech" className="px-4 py-1.5 text-xs font-bold text-slate-700 hover:text-sky-600 hover:bg-white rounded-full transition-all">
+              Drone Blueprint
+            </a>
+            <a href="#roi-calculator" className="px-4 py-1.5 text-xs font-bold text-slate-700 hover:text-sky-600 hover:bg-white rounded-full transition-all">
+              ROI Simulator
+            </a>
+            <a href="#articles" className="px-4 py-1.5 text-xs font-bold text-slate-700 hover:text-sky-600 hover:bg-white rounded-full transition-all">
+              Papers & Case Studies
+            </a>
+            <a href="#author" className="px-4 py-1.5 text-xs font-bold text-slate-700 hover:text-sky-600 hover:bg-white rounded-full transition-all">
+              Author
+            </a>
+          </nav>
+
+          {/* Newsletter Subscribe CTA & Mobile Toggle */}
+          <div className="flex items-center gap-3">
+            {onOpenNewsletter && (
+              <button
+                onClick={onOpenNewsletter}
+                className="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold bg-sky-600 text-white hover:bg-sky-700 transition-all shadow-md shadow-sky-600/20 hover:scale-[1.02]"
+              >
+                <Mail className="w-3.5 h-3.5" />
+                <span>Subscribe Dispatch</span>
+              </button>
+            )}
+
+            {/* Mobile Menu Toggle */}
+            <div className="lg:hidden flex items-center">
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="p-2 rounded-lg text-slate-600 hover:bg-slate-100"
+                aria-label="Toggle Navigation Menu"
+              >
+                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Dropdown Menu */}
+        {mobileMenuOpen && (
+          <div className="lg:hidden mt-4 pt-4 border-t border-slate-200 flex flex-col space-y-2 pb-3">
+            <a 
+              href="#vision" 
+              onClick={() => setMobileMenuOpen(false)}
+              className="px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100"
+            >
+              The Vision
+            </a>
+            <a 
+              href="#drone-tech" 
+              onClick={() => setMobileMenuOpen(false)}
+              className="px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100"
+            >
+              Drone Blueprint Explorer
+            </a>
+            <a 
+              href="#roi-calculator" 
+              onClick={() => setMobileMenuOpen(false)}
+              className="px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100"
+            >
+              ROI & Safety Calculator
+            </a>
+            <a 
+              href="#articles" 
+              onClick={() => setMobileMenuOpen(false)}
+              className="px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100"
+            >
+              Research Papers & Case Studies
+            </a>
+            <a 
+              href="#author" 
+              onClick={() => setMobileMenuOpen(false)}
+              className="px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100"
+            >
+              Author & Contact
+            </a>
+            {onOpenNewsletter && (
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenNewsletter();
+                }}
+                className="mt-2 w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold bg-sky-600 text-white hover:bg-sky-700"
+              >
+                <Mail className="w-4 h-4" />
+                <span>Subscribe to Dispatch</span>
+              </button>
+            )}
+          </div>
+        )}
+      </div>
+    </header>
+  );
+};
