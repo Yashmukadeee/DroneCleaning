@@ -46,7 +46,7 @@ export const ARTICLES_DATA: Article[] = [
     author: {
       name: 'Yash Mukade',
       role: 'Robotics & Facade Automation Specialist',
-      avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400&auto=format&fit=crop',
+      avatarUrl: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=400&auto=format&fit=crop',
       location: ''
     },
     likes: 142,
@@ -97,7 +97,7 @@ export const ARTICLES_DATA: Article[] = [
     author: {
       name: 'Yash Mukade',
       role: 'Robotics & Facade Automation Specialist',
-      avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400&auto=format&fit=crop',
+      avatarUrl: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=400&auto=format&fit=crop',
       location: ''
     },
     likes: 98,
@@ -171,7 +171,7 @@ export const ARTICLES_DATA: Article[] = [
     author: {
       name: 'Yash Mukade',
       role: 'Robotics & Facade Automation Specialist',
-      avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400&auto=format&fit=crop',
+      avatarUrl: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=400&auto=format&fit=crop',
       location: ''
     },
     likes: 115,
@@ -211,7 +211,7 @@ export const ARTICLES_DATA: Article[] = [
     author: {
       name: 'Yash Mukade',
       role: 'Robotics & Facade Automation Specialist',
-      avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400&auto=format&fit=crop',
+      avatarUrl: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=400&auto=format&fit=crop',
       location: ''
     },
     likes: 84,
@@ -251,7 +251,7 @@ export const ARTICLES_DATA: Article[] = [
     author: {
       name: 'Yash Mukade',
       role: 'Robotics & Facade Automation Specialist',
-      avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400&auto=format&fit=crop',
+      avatarUrl: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=400&auto=format&fit=crop',
       location: ''
     },
     likes: 76,
@@ -298,7 +298,7 @@ export const ARTICLES_DATA: Article[] = [
     author: {
       name: 'Yash Mukade',
       role: 'Robotics & Facade Automation Specialist',
-      avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400&auto=format&fit=crop',
+      avatarUrl: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=400&auto=format&fit=crop',
       location: ''
     },
     likes: 129,

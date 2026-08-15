@@ -74,7 +74,7 @@ export const Footer: React.FC = () => {
             <div className="bg-slate-800/60 p-6 rounded-2xl border border-slate-700/80 space-y-4">
               <div className="flex items-center gap-3">
                 <img
-                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400&auto=format&fit=crop"
+                  src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=400&auto=format&fit=crop"
                   alt="Yash Mukade"
                   className="w-14 h-14 rounded-full object-cover border-2 border-sky-400"
                 />
