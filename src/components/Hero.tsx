@@ -31,28 +31,22 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToArticles }) => {
         </p>
 
         {/* CTA Buttons */}
-        <div className="mt-10 flex flex-wrap justify-center items-center gap-3.5">
-          <a
-            href="#drone-tech"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-bold rounded-full text-white bg-sky-600 hover:bg-sky-700 transition-all shadow-lg shadow-sky-600/30 hover:shadow-sky-600/50 hover:scale-[1.02]"
-          >
-            <span>Interactive Blueprint</span>
-            <ArrowDown className="w-4 h-4" />
-          </a>
-
-          <a
-            href="#roi-calculator"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-bold rounded-full text-slate-800 bg-amber-100/80 hover:bg-amber-200/80 border border-amber-300 transition-all shadow-sm hover:scale-[1.02]"
-          >
-            <span>ROI & Safety Calculator</span>
-          </a>
-
+        <div className="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4">
           <button
             onClick={onScrollToArticles}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-bold rounded-full text-slate-700 bg-white hover:bg-slate-50 border border-slate-300 transition-all shadow-sm hover:shadow-md hover:scale-[1.02]"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold rounded-full text-white bg-sky-600 hover:bg-sky-700 transition-all shadow-lg shadow-sky-600/30 hover:shadow-sky-600/50 hover:scale-[1.02]"
           >
-            <span>Read Research Papers</span>
+            <span>Explore Concept Papers & Research</span>
+            <ArrowDown className="w-5 h-5" />
           </button>
+
+          <a
+            href="#author"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold rounded-full text-slate-700 bg-white hover:bg-slate-50 border border-slate-300 transition-all shadow-sm hover:shadow-md hover:scale-[1.02]"
+          >
+            <ShieldCheck className="w-5 h-5 text-emerald-500" />
+            <span>Connect with Yash Mukade</span>
+          </a>
         </div>
 
         {/* Concept Impact Highlights */}

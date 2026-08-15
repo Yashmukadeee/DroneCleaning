@@ -42,21 +42,15 @@ export const Header: React.FC<HeaderProps> = ({ onOpenNewsletter }) => {
           </a>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center space-x-1 bg-slate-100/80 p-1.5 rounded-full border border-slate-200">
-            <a href="#vision" className="px-4 py-1.5 text-xs font-bold text-slate-700 hover:text-sky-600 hover:bg-white rounded-full transition-all">
-              The Vision
+          <nav className="hidden md:flex items-center space-x-1 bg-slate-100/80 p-1.5 rounded-full border border-slate-200">
+            <a href="#vision" className="px-5 py-2 text-xs font-bold text-slate-700 hover:text-sky-600 hover:bg-white rounded-full transition-all">
+              The Vision & Problem
             </a>
-            <a href="#drone-tech" className="px-4 py-1.5 text-xs font-bold text-slate-700 hover:text-sky-600 hover:bg-white rounded-full transition-all">
-              Drone Blueprint
+            <a href="#articles" className="px-5 py-2 text-xs font-bold text-slate-700 hover:text-sky-600 hover:bg-white rounded-full transition-all">
+              Concept Papers & Research
             </a>
-            <a href="#roi-calculator" className="px-4 py-1.5 text-xs font-bold text-slate-700 hover:text-sky-600 hover:bg-white rounded-full transition-all">
-              ROI Simulator
-            </a>
-            <a href="#articles" className="px-4 py-1.5 text-xs font-bold text-slate-700 hover:text-sky-600 hover:bg-white rounded-full transition-all">
-              Papers & Case Studies
-            </a>
-            <a href="#author" className="px-4 py-1.5 text-xs font-bold text-slate-700 hover:text-sky-600 hover:bg-white rounded-full transition-all">
-              Author
+            <a href="#author" className="px-5 py-2 text-xs font-bold text-slate-700 hover:text-sky-600 hover:bg-white rounded-full transition-all">
+              Author & Contact
             </a>
           </nav>
 
@@ -73,7 +67,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenNewsletter }) => {
             )}
 
             {/* Mobile Menu Toggle */}
-            <div className="lg:hidden flex items-center">
+            <div className="md:hidden flex items-center">
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className="p-2 rounded-lg text-slate-600 hover:bg-slate-100"
@@ -87,34 +81,20 @@ export const Header: React.FC<HeaderProps> = ({ onOpenNewsletter }) => {
 
         {/* Mobile Dropdown Menu */}
         {mobileMenuOpen && (
-          <div className="lg:hidden mt-4 pt-4 border-t border-slate-200 flex flex-col space-y-2 pb-3">
+          <div className="md:hidden mt-4 pt-4 border-t border-slate-200 flex flex-col space-y-2 pb-3">
             <a 
               href="#vision" 
               onClick={() => setMobileMenuOpen(false)}
               className="px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100"
             >
-              The Vision
-            </a>
-            <a 
-              href="#drone-tech" 
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100"
-            >
-              Drone Blueprint Explorer
-            </a>
-            <a 
-              href="#roi-calculator" 
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100"
-            >
-              ROI & Safety Calculator
+              The Vision & Problem
             </a>
             <a 
               href="#articles" 
               onClick={() => setMobileMenuOpen(false)}
               className="px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100"
             >
-              Research Papers & Case Studies
+              Concept Papers & Research
             </a>
             <a 
               href="#author" 

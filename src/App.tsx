@@ -4,8 +4,6 @@ import { Article, Category } from './types/blog';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { VisionSection } from './components/VisionSection';
-import { DroneTechExplorer } from './components/DroneTechExplorer';
-import { RoiCalculator } from './components/RoiCalculator';
 import { ArticleCard } from './components/ArticleCard';
 import { ArticleReaderModal } from './components/ArticleReaderModal';
 import { NewsletterModal } from './components/NewsletterModal';
@@ -53,12 +51,6 @@ export default function App() {
 
       {/* Vision & Motivation Section */}
       <VisionSection />
-
-      {/* Interactive Blueprint & Anatomy Explorer */}
-      <DroneTechExplorer />
-
-      {/* ROI & Safety Simulator */}
-      <RoiCalculator />
 
       {/* Main Articles & Whitepapers Hub */}
       <section id="articles" className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
