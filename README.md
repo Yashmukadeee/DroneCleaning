@@ -1,9 +1,9 @@
 # 🚁 DroneCleaning.Tech — Facade Automation Journal & Engineering Platform
 
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.5+-blue.svg?style=flat&logo=typescript)](https://www.typescriptlang.org/)
-[![React](https://img.shields.io/badge/React-18-61DAFB.svg?style=flat&logo=react)](https://react.dev/)
-[![Vite](https://img.shields.io/badge/Vite-6.0+-646CFF.svg?style=flat&logo=vite)](https://vitejs.dev/)
-[![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-3.4+-38B2AC.svg?style=flat&logo=tailwind-css)](https://tailwindcss.com/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9+-blue.svg?style=flat&logo=typescript)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/React-19-61DAFB.svg?style=flat&logo=react)](https://react.dev/)
+[![Vite](https://img.shields.io/badge/Vite-7.3+-646CFF.svg?style=flat&logo=vite)](https://vitejs.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-4.2+-38B2AC.svg?style=flat&logo=tailwind-css)](https://tailwindcss.com/)
 
 A modern, interactive engineering blog and technical repository dedicated to tethered drone facade robotics, close-proximity millimeter-wave radar avionics, purified 0 PPM deionized water chemistry, and commercial building ROI analysis.
 
@@ -13,19 +13,21 @@ Created and authored by **[Yash Mukade](https://yashmukade.netlify.app/)**.
 
 ## 🌟 Key Features
 
-- 📘 **Technical Whitepapers & Research Hub**: Conceptual and peer-reviewed deep dives into 77GHz FMCW radar positioning, fluid dynamics, multirotor aerodynamics, urban aviation compliance, and AI thermal defect detection.
+- 📘 **Technical Whitepapers & Research Hub**: Conceptual and peer-reviewed deep dives into 77GHz FMCW radar positioning, fluid dynamics, multirotor avionics, urban aviation compliance, and AI thermal defect detection.
 - 🎯 **Idea & Vision Pitching Showcase**: Clear architectural problem breakdown, high-rise gondola safety risk mitigation, and robotic maintenance innovation.
 - 🔍 **Live Search & Category Filtering**: Instant client-side search across research papers, tags, and categories.
+- 📬 **Live Contact to Inbox**: Direct form submission integration powering messages directly to email inbox.
 - 📱 **Ultra-Responsive & Polished UI**: Built with modern typography, smooth glassmorphism, micro-animations, and full mobile optimization.
 
 ---
 
 ## 🚀 Tech Stack
 
-- **Framework**: [React 18](https://react.dev/) with [TypeScript](https://www.typescriptlang.org/)
-- **Build Tool**: [Vite](https://vitejs.dev/)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Framework**: [React 19](https://react.dev/) with [TypeScript](https://www.typescriptlang.org/)
+- **Build Tool**: [Vite 7](https://vitejs.dev/)
+- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
 - **Icons**: [Lucide React](https://lucide.dev/)
+
 
 ---
 

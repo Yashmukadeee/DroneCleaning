@@ -1,23 +1,58 @@
 import React, { useState } from 'react';
-import { UserCheck, Mail, Send, CheckCircle2, Bot, Linkedin, Github, Globe, Instagram, Lightbulb } from 'lucide-react';
+import { UserCheck, Mail, Send, CheckCircle2, Bot, Linkedin, Github, Globe, Instagram, Lightbulb, Loader2, AlertCircle } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   const [contactName, setContactName] = useState('');
   const [contactEmail, setContactEmail] = useState('');
   const [contactMessage, setContactMessage] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [contactSuccess, setContactSuccess] = useState(false);
+  const [contactError, setContactError] = useState<string | null>(null);
 
-  const handleContactSubmit = (e: React.FormEvent) => {
+  const handleContactSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!contactEmail || !contactMessage) return;
 
-    setContactSuccess(true);
-    setTimeout(() => {
-      setContactSuccess(false);
-      setContactName('');
-      setContactEmail('');
-      setContactMessage('');
-    }, 4000);
+    setIsSubmitting(true);
+    setContactError(null);
+
+    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          name: contactName || 'Anonymous Visitor',
+          email: contactEmail,
+          message: contactMessage,
+          subject: `New Inquiry on DroneCleaning.Tech from ${contactName || contactEmail}`,
+          from_name: 'DroneCleaning.Tech Portal'
+        })
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setContactSuccess(true);
+        setContactName('');
+        setContactEmail('');
+        setContactMessage('');
+        setTimeout(() => {
+          setContactSuccess(false);
+        }, 5000);
+      } else {
+        setContactError(result.message || 'Failed to send message. Please try again.');
+      }
+    } catch (err) {
+      setContactError('A network error occurred. Please check your connection and try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -100,19 +135,27 @@ export const Footer: React.FC = () => {
               <div className="bg-emerald-950/80 border border-emerald-500/40 rounded-2xl p-6 text-center text-emerald-300 animate-in fade-in duration-300">
                 <CheckCircle2 className="w-10 h-10 mx-auto text-emerald-400 mb-2" />
                 <h4 className="font-bold text-lg text-white">Message Sent Successfully!</h4>
-                <p className="text-xs mt-1 text-emerald-200">Thank you for reaching out. Yash will get back to you shortly.</p>
+                <p className="text-xs mt-1 text-emerald-200">Thank you for reaching out. Yash will get back to you shortly at your email.</p>
               </div>
             ) : (
               <form onSubmit={handleContactSubmit} className="space-y-4">
+                {contactError && (
+                  <div className="flex items-center gap-2 p-3.5 rounded-xl bg-red-950/60 border border-red-500/40 text-red-300 text-xs font-semibold animate-in fade-in">
+                    <AlertCircle className="w-4 h-4 text-red-400 shrink-0" />
+                    <span>{contactError}</span>
+                  </div>
+                )}
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-semibold text-slate-400 mb-1">Your Name</label>
                     <input
                       type="text"
                       placeholder="Jane Doe"
+                      disabled={isSubmitting}
                       value={contactName}
                       onChange={(e) => setContactName(e.target.value)}
-                      className="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:ring-2 focus:ring-sky-500"
+                      className="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:ring-2 focus:ring-sky-500 disabled:opacity-60"
                     />
                   </div>
                   <div>
@@ -120,10 +163,11 @@ export const Footer: React.FC = () => {
                     <input
                       type="email"
                       required
+                      disabled={isSubmitting}
                       placeholder="ymukade3@gmail.com"
                       value={contactEmail}
                       onChange={(e) => setContactEmail(e.target.value)}
-                      className="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:ring-2 focus:ring-sky-500"
+                      className="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:ring-2 focus:ring-sky-500 disabled:opacity-60"
                     />
                   </div>
                 </div>
@@ -133,10 +177,11 @@ export const Footer: React.FC = () => {
                   <textarea
                     rows={3}
                     required
+                    disabled={isSubmitting}
                     placeholder="Share your thoughts or discussion ideas on this project concept..."
                     value={contactMessage}
                     onChange={(e) => setContactMessage(e.target.value)}
-                    className="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:ring-2 focus:ring-sky-500 resize-none"
+                    className="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:ring-2 focus:ring-sky-500 resize-none disabled:opacity-60"
                   />
                 </div>
 
@@ -150,14 +195,25 @@ export const Footer: React.FC = () => {
 
                   <button
                     type="submit"
-                    className="px-6 py-2.5 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-sm transition-all shadow-lg shadow-sky-500/20 inline-flex items-center gap-2"
+                    disabled={isSubmitting}
+                    className="px-6 py-2.5 rounded-xl bg-sky-500 hover:bg-sky-400 disabled:bg-sky-600/50 disabled:cursor-not-allowed text-slate-950 font-bold text-sm transition-all shadow-lg shadow-sky-500/20 inline-flex items-center gap-2"
                   >
-                    <Send className="w-4 h-4" />
-                    Send Message
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin text-slate-950" />
+                        <span>Sending...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-4 h-4" />
+                        <span>Send Message</span>
+                      </>
+                    )}
                   </button>
                 </div>
               </form>
             )}
+
 
           </div>
 

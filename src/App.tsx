@@ -32,7 +32,7 @@ export default function App() {
     return matchesCategory && matchesSearch;
   });
 
-  const categories: Category[] = ['All', 'Technology', 'Process', 'Business', 'Safety & Regulations', 'Case Studies'];
+  const categories: Category[] = ['All', 'Technology', 'Process', 'Business', 'Safety & Regulations'];
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans antialiased selection:bg-sky-500 selection:text-white">
