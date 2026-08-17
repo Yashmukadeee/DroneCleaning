@@ -6,12 +6,14 @@ import { Hero } from './components/Hero';
 import { VisionSection } from './components/VisionSection';
 import { ArticleCard } from './components/ArticleCard';
 import { Footer } from './components/Footer';
+import { AIChatBot } from './components/AIChatBot';
 import { Search, BookOpen, Layers } from 'lucide-react';
 
 export default function App() {
   const [articles] = useState<Article[]>(ARTICLES_DATA);
   const [activeCategory, setActiveCategory] = useState<Category>('All');
   const [searchQuery, setSearchQuery] = useState('');
+  const [isChatOpen, setIsChatOpen] = useState<boolean | undefined>(undefined);
 
   // Force light mode for clean crisp aesthetic
   useEffect(() => {
@@ -36,7 +38,8 @@ export default function App() {
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans antialiased selection:bg-sky-500 selection:text-white">
       
       {/* Top Sticky Header */}
-      <Header />
+      <Header onOpenChat={() => setIsChatOpen(true)} />
+
 
       {/* Hero Section */}
       <Hero
@@ -135,6 +138,13 @@ export default function App() {
       {/* Footer */}
       <Footer />
 
+      {/* Intelligent AI Chatbot Assistant */}
+      <AIChatBot 
+        isOpenExternal={isChatOpen} 
+        onCloseExternal={() => setIsChatOpen(false)} 
+      />
+
     </div>
   );
 }
+

@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Bot, Menu, X } from 'lucide-react';
+import { Bot, Menu, X, Sparkles } from 'lucide-react';
 
-export const Header: React.FC = () => {
+interface HeaderProps {
+  onOpenChat?: () => void;
+}
+
+export const Header: React.FC<HeaderProps> = ({ onOpenChat }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -50,8 +54,17 @@ export const Header: React.FC = () => {
             </a>
           </nav>
 
-          {/* Right Action Button: Contact / Pitch */}
-          <div className="hidden md:flex items-center">
+          {/* Right Action Buttons */}
+          <div className="hidden md:flex items-center gap-3">
+            {onOpenChat && (
+              <button
+                onClick={onOpenChat}
+                className="px-4 py-2 rounded-full text-xs font-bold bg-sky-50 text-sky-700 border border-sky-200 hover:bg-sky-100 hover:border-sky-300 transition-all flex items-center gap-1.5 shadow-xs"
+              >
+                <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+                <span>Ask AI</span>
+              </button>
+            )}
             <a
               href="#author"
               className="px-5 py-2 rounded-full text-xs font-bold bg-sky-600 text-white hover:bg-sky-700 transition-all shadow-md shadow-sky-600/20 hover:scale-[1.02]"
@@ -75,6 +88,18 @@ export const Header: React.FC = () => {
         {/* Mobile Dropdown Menu */}
         {mobileMenuOpen && (
           <div className="md:hidden mt-4 pt-4 border-t border-slate-200 flex flex-col space-y-2 pb-3">
+            {onOpenChat && (
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenChat();
+                }}
+                className="px-3 py-2 rounded-lg text-sm font-bold text-sky-700 bg-sky-50 flex items-center gap-2 text-left"
+              >
+                <Sparkles className="w-4 h-4 text-amber-500" />
+                <span>Ask AI Technical Assistant</span>
+              </button>
+            )}
             <a 
               href="#vision" 
               onClick={() => setMobileMenuOpen(false)}
